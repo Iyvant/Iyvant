@@ -1,0 +1,57 @@
+flowchart TB
+stateDiagram 
+%% Colors %%
+linkStyle default stroke-width:2px
+classDef blue fill:#2374f7,stroke:#000,stroke-width:2px,color:#fff
+classDef orange fill:#fc822b,stroke:#000,stroke-width:2px,color:#fff
+classDef green fill:#16b552,stroke:#000,stroke-width:2px,color:#fff
+classDef red fill:#ed2633,stroke:#000,stroke-width:2px,color:#fff
+classDef magenta fill:magenta,stroke:#000,stroke-width:2px,color:#fff
+
+%% Subgraph %%
+subgraph SG1["Subgroup Dewasa & Bijak"]
+    direction TB
+        K1["Single"]
+        K2["Menikah"]
+        nn["Beranak"]
+        nm["Tidak beranak"]
+        nd["Tidak Beranak"]
+        no{{"Insan Kamil"}}
+end
+    K2 --> nn & nm
+    K1 --> nd
+    nn --> no
+    nm --> no
+    nd --> no
+
+%% Main Graph %%
+A{"Mati"}:::blue --> B["Ditiupkan Ruh"]:::orange
+B --> C["Air Mani"]:::orange
+C --> D["Zigot"]:::orange
+D --> E["Dilahirkan"]:::orange
+E -- Gagal Lahir --> A
+E -- Berhasil Lahir --> F["Bayi"]:::orange
+F --> G["Balita"]:::orange
+G --> H["Remaja"]:::orange
+H -- Remaja Sadar --> I["Remaja Sadar"]:::orange
+H -- Remaja Bangor --> J["Remaja Tidak Sadar"]:::orange
+I -- Ruhnya Mendapatkan petunjuk --o B
+B -- Seakan dilahirkan kembali --> K["Dewasa & Bijak"]:::orange
+K --> K2 & K1
+no --> A
+J --> A
+
+%% Link Colors %%
+linkStyle 0 stroke:blue
+linkStyle 1,2,3,4,5,6,7,8,9,10,11 stroke:orange
+
+%% Node Styles %%
+style A fill:#00C853
+
+%% Clickable Links %%
+click K1 "https://example.com/single"
+click K2 "https://example.com/menikah"
+click nn "https://example.com/beranak"
+click nm "https://example.com/tidak-beranak"
+click nd "https://example.com/tidak-beranak"
+click no "https://example.com/insan-kamil"
